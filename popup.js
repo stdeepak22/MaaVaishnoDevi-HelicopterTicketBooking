@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         btn.classList.add('clicked');
         success && success();
        }, ()=>{
-        alert('Please setup your profile first.');        
+        //alert('Please setup your profile first.');        
         failed ? failed() : toggleWrapperDiv();
        });     
     }
@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('clearProfile').addEventListener('click', function(e) {    
         chrome.storage.local.clear(()=>{            
             var error = chrome.runtime.lastError;            
-            alert(error||'Removed successfully.');
+            //alert(error||'Removed successfully.');
             loadProfileData();
         });        
     }); 

@@ -67,7 +67,7 @@ function EnableRightClick(){
     chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
         if(changeInfo.url!=undefined)
         {
-            alert('executing..');
+            //alert('executing..');
             chrome.tabs.executeScript(tabId, {
                 file: 'js/enable-rightclick.js'
             });

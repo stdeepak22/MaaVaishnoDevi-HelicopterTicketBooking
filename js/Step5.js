@@ -27,9 +27,9 @@
 
                 btn.click();
 
-                setTimeout(() => {
-                    alert('Select the Timeslot, and nevigate to next screen.  I will handle rest there.');
-                }, 1000);
+                // setTimeout(() => {
+                //     alert('Select the Timeslot, and nevigate to next screen.  I will handle rest there.');
+                // }, 1000);
             }
         }, 250);
     }, 1000);
