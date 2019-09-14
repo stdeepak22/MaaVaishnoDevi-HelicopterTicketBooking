@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Ticket Booking</title>
+    <script src="popup.js"></script>
+    <style>
+        body {
+            min-width: 270px;
+        }
+
+        .lbl{
+            color: #f4511e;
+        }
+
+        .btn {
+            position: relative;
+            background-color: #f4511e;
+            padding: 8px;
+            margin: 0px;
+            border-radius: 0px;
+            margin-top: -1px;
+            border-width: 0px;
+            transition: 0.3s;
+            cursor: pointer;
+            opacity: 0.7;
+            color:white;
+        }
+
+        .btn:hover {
+            opacity: 1;
+        }
+
+        /* .btnWrapper>button.clicked::after {
+            content: '✔';
+            position: absolute;
+            right: 5px;
+            top: 3px;
+            font-size: 18px;
+        } */
+
+        .btnWrapper>button.clicked {
+            opacity: 1;
+        }
+
+        .btnWrapper>button {
+            width: 270px;            
+            text-align: left;
+        }
+        
+        .my-hide {
+            display: none;
+        }
+
+        .my-show {
+            display: block;
+        }
+
+        #btnWrapper2 {            
+            width: 450px;
+        }
+
+        .iconBtn {
+            float: right;            
+            margin-bottom: 5px;
+            border-radius: 10px;
+            height: 20px;                        
+            width: 20px;
+            padding:0px;                                
+        }
+
+        .iconBtn.cog::after{
+            content: '⚙';
+            position: absolute;
+            font-size: 20px;
+            top: -5px;
+            right: 2px;
+            color:white;
+        }
+        .iconBtn.dlt::after{
+            content: '×';
+            position: absolute;
+            font-size: 20px;
+            top: -1px;
+            right: 4px;
+            color:white;
+        }
+    </style>
+</head>
+
+<body>
+    <button class="btn iconBtn cog" id="toggle" title="Setup Data"></button>
+    <div class="btnWrapper" id="btnWrapper">
+        <button class="btn" id="step1">1. Open Site</button>
+        <button class="btn" id="step2">2. Login Page</button>
+        <button class="btn" id="step3">3. Login</button>
+        <button class="btn" id="step4">4. Helicopter Booking Page</button>
+        <button class="btn" id="step5">5. Select Route and Timeslot</button>
+        <button class="btn" id="step6">6. Passenger Details and Payment Page</button>
+        <button class="btn" id="step7">7. Logout</button>
+    </div>
+    <div class="btnWrapper2 my-hide" id="btnWrapper2">
+        <span class="lbl">Credentials:</span><br/>
+        <input type="text" id="userName" placeholder="Login User Name"/>
+        <input type="password" id="userPassword" placeholder="Login Password"/>
+        <br/>
+        <span class="lbl">Route Info:</span><br/>
+        <!-- <input type="number" id="passengerCount" min="1" step="1" style="width:50px;" placeholder="No of Passenger"/> -->
+        <select id="passengerCount" style="width: 90px;">
+            <option value=undefined style="display: none">No of Pass.</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>    
+        </select>
+        <select id="routeName" style="width: 180px">
+            <option value=undefined style="display: none">ROUTE NAME</option>
+            <option value="1,7">Katra-Sanjhichhat (Global Vectra)</option>
+            <option value="1,8">Katra-Sanjhichhat (Himalayan)</option>
+            <option value="3,6">Katra-Sanjhichhat-Katra (Global Vectra)</option>
+            <option value="3,10">Katra-Sanjhichhat-Katra (Himalayan)</option>
+            <option value="2,2">Sanjhichhat-Katra (Global Vectra)</option>
+            <option value="2,9">Sanjhichhat-Katra (Himalayan)</option>    
+        </select>
+        <input type="text" id="travelDate" style="width: 110px" placeholder="Date: dd/mm/yyyy"/>
+        <br/>
+
+
+
+        <span class="lbl">Passengers Details:</span><br/>
+        <input type="text" id="bookiePan" style="width:200px" placeholder="Bookie PAN Card" /><br/>
+        <input type="text" id="c11" style="width:80px" Placeholder="Name" />
+        <select id="c21" style="width: 40px;">
+            <option selected="selected" value="Male">M</option>
+            <option value="Female">F</option>                
+        </select>
+        <input type="number" step="1" min="1" id="c31" style="width: 40px;" placeholder="Age" />
+        <select id="c41" style="width: 90px">
+            <option value="AADHAAR">AADHAAR Card</option>
+            <option value="NBPB">Bank Passbook</option>
+            <option value="CRCD">Credit Card</option>
+            <option value="DRLC">Driving License</option>
+            <option value="GOVT">Govt issued I-Card</option>
+            <option value="PANC">Pan Card</option>
+            <option value="PSPT">Passport</option>
+            <option value="STUD">Student I-Card</option>
+            <option value="VOTE">Voter I-Card</option>
+        </select>
+        <input type="text" id="c51" style="width: 90px;" placeholder="ID no" />
+        <input type="text" id="c61" style="width: 75px;" placeholder="Contact No" />
+        <br/>
+
+
+        <input type="text" id="c12" style="width:80px" Placeholder="Name" />
+        <select id="c22" style="width: 40px;">
+            <option selected="selected" value="Male">M</option>
+            <option value="Female">F</option>                
+        </select>
+        <input type="number" step="1" min="1" id="c32" style="width: 40px;" placeholder="Age" />
+        <select id="c42" style="width: 90px">
+            <option value="AADHAAR">AADHAAR Card</option>
+            <option value="NBPB">Bank Passbook</option>
+            <option value="CRCD">Credit Card</option>
+            <option value="DRLC">Driving License</option>
+            <option value="GOVT">Govt issued I-Card</option>
+            <option value="PANC">Pan Card</option>
+            <option value="PSPT">Passport</option>
+            <option value="STUD">Student I-Card</option>
+            <option value="VOTE">Voter I-Card</option>
+        </select>
+        <input type="text" id="c52" style="width: 90px;" placeholder="ID no" />
+        <input type="text" id="c62" style="width: 75px;" placeholder="Contact No" />
+        <br/>
+
+
+        <input type="text" id="c13" style="width:80px" Placeholder="Name" />
+        <select id="c23" style="width: 40px;">
+            <option selected="selected" value="Male">M</option>
+            <option value="Female">F</option>                
+        </select>
+        <input type="number" step="1" min="1" id="c33" style="width: 40px;" placeholder="Age" />
+        <select id="c43" style="width: 90px">
+            <option value="AADHAAR">AADHAAR Card</option>
+            <option value="NBPB">Bank Passbook</option>
+            <option value="CRCD">Credit Card</option>
+            <option value="DRLC">Driving License</option>
+            <option value="GOVT">Govt issued I-Card</option>
+            <option value="PANC">Pan Card</option>
+            <option value="PSPT">Passport</option>
+            <option value="STUD">Student I-Card</option>
+            <option value="VOTE">Voter I-Card</option>
+        </select>
+        <input type="text" id="c53" style="width: 90px;" placeholder="ID no" />
+        <input type="text" id="c63" style="width: 75px;" placeholder="Contact No" />
+        <br/>
+
+
+
+
+        <input type="text" id="c14" style="width:80px" Placeholder="Name" />
+        <select id="c24" style="width: 40px;">
+            <option selected="selected" value="Male">M</option>
+            <option value="Female">F</option>                
+        </select>
+        <input type="number" step="1" min="1" id="c34" style="width: 40px;" placeholder="Age" />
+        <select id="c44" style="width: 90px">
+            <option value="AADHAAR">AADHAAR Card</option>
+            <option value="NBPB">Bank Passbook</option>
+            <option value="CRCD">Credit Card</option>
+            <option value="DRLC">Driving License</option>
+            <option value="GOVT">Govt issued I-Card</option>
+            <option value="PANC">Pan Card</option>
+            <option value="PSPT">Passport</option>
+            <option value="STUD">Student I-Card</option>
+            <option value="VOTE">Voter I-Card</option>
+        </select>
+        <input type="text" id="c54" style="width: 90px;" placeholder="ID no" />
+        <input type="text" id="c64" style="width: 75px;" placeholder="Contact No" />
+        <br/>
+
+
+
+        <input type="text" id="c15" style="width:80px" Placeholder="Name" />
+        <select id="c25" style="width: 40px;">
+            <option selected="selected" value="Male">M</option>
+            <option value="Female">F</option>                
+        </select>
+        <input type="number" step="1" min="1" id="c35" style="width: 40px;" placeholder="Age" />
+        <select id="c45" style="width: 90px">
+            <option value="AADHAAR">AADHAAR Card</option>
+            <option value="NBPB">Bank Passbook</option>
+            <option value="CRCD">Credit Card</option>
+            <option value="DRLC">Driving License</option>
+            <option value="GOVT">Govt issued I-Card</option>
+            <option value="PANC">Pan Card</option>
+            <option value="PSPT">Passport</option>
+            <option value="STUD">Student I-Card</option>
+            <option value="VOTE">Voter I-Card</option>
+        </select>
+        <input type="text" id="c55" style="width: 90px;" placeholder="ID no" />
+        <input type="text" id="c65" style="width: 75px;" placeholder="Contact No" />
+        <br/>
+
+
+        <br/>
+        <button class="btn" id="btnSaveProfile">Save ✔</button>
+        <button class="btn" id="clearProfile" style="float: right;">Clear ×</button>
+        <!-- <button class="btn iconBtn dlt" id="clearProfile" title="Clear Profile" style=""></button>      -->
+    </div>
+</body>
+
+</html>

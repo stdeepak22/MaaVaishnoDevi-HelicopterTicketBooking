@@ -1,0 +1,1 @@
+document.querySelector('#Image4').click();
