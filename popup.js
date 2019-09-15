@@ -96,7 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('clearProfile').addEventListener('click', function(e) {    
         chrome.storage.local.clear(()=>{            
             var error = chrome.runtime.lastError;            
-            //alert(error||'Removed successfully.');
+            error && alert(error);
             loadProfileData();
         });        
     }); 
