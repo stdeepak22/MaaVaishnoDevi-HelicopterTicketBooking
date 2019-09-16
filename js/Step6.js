@@ -58,5 +58,5 @@
         document.querySelector(`#TextBoxRow5${index+1}`).value = user[`c5${index+1}`];  
         document.querySelector(`#TextBoxRow6${index+1}`).value = user[`c6${index+1}`];
     }
-    //document.querySelector('#BtnContinue').click();
+    document.querySelector('#BtnContinue').click();
 })();
